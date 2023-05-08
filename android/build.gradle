@@ -1,0 +1,48 @@
+group 'com.urovo.urovo_rfid'
+version '1.0'
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.2.0'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+//        flatDir {
+//            dirs project(':urovo_rfid').file('libs')
+//        }
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 31
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdkVersion 16
+    }
+}
+
+dependencies {
+    implementation files('./libs/gson-2.10.1.jar')
+    compileOnly files('./libs/USDKLibrary-v2.3.0427.aar')
+}
+
+
